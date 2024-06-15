@@ -1,0 +1,23 @@
+<user@host Part-1> docker run -d devopsdockeruh/simple-web-service:ubuntu
+d1ff714230a4f4aea643cbb6286c2067066cb062df017b57edb41b2487e80981
+
+<user@host Part-1> docker run -d devopsdockeruh/simple-web-service:alpine
+c8e78e66556206dbde7f7c2724deb824b2e3031979fca8e7b1b2f0adc3648922
+
+<user@host Part-1> docker image ls
+REPOSITORY                          TAG       IMAGE ID       CREATED       SIZE
+devopsdockeruh/simple-web-service   ubuntu    4e3362e907d5   3 years ago   83MB
+devopsdockeruh/simple-web-service   alpine    fd312adc88e0   3 years ago   15.7MB
+
+<user@host Part-1> docker container ls
+CONTAINER ID   IMAGE                                      COMMAND                 CREATED          STATUS          PORTS     NAMES
+c8e78e665562   devopsdockeruh/simple-web-service:alpine   "/usr/src/app/server"   20 seconds ago   Up 19 seconds             unruffled_sammet
+d1ff714230a4   devopsdockeruh/simple-web-service:ubuntu   "/usr/src/app/server"   24 seconds ago   Up 23 seconds             sweet_proskuriakova
+
+<user@host Part-1> docker exec -it unruffled_sammet sh
+/usr/src/app # tail -f ./text.log
+2024-06-15 22:36:11 +0000 UTC
+2024-06-15 22:36:13 +0000 UTC
+2024-06-15 22:36:15 +0000 UTC
+2024-06-15 22:36:17 +0000 UTC
+Secret message is: 'You can find the source code here: https://github.com/docker-hy'
