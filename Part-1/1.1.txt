@@ -1,0 +1,4 @@
+<user@host Part-1> docker ps -a
+5e7d43c6c0e8   nginx     "/docker-entrypoint.…"   5 minutes ago   Exited (0) 5 minutes ago             flamboyant_mayer
+1c5344794132   nginx     "/docker-entrypoint.…"   5 minutes ago   Exited (0) 5 minutes ago             cool_nash
+255cc4557353   nginx     "/docker-entrypoint.…"   5 minutes ago   Up 5 minutes               80/tcp    lucid_pare
