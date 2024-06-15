@@ -1,0 +1,7 @@
+<user@host Part-1> docker run --rm -it --name ubuntu ubuntu
+
+root@7115ff87b7d6:/# apt-get update
+
+root@7115ff87b7d6:/# apt install curl
+
+root@7115ff87b7d6:/# sh -c 'while true; do echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website; done'
