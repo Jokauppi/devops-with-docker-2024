@@ -1,0 +1,4 @@
+<user@host Part-1> docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+<user@host Part-1> docker image ls
+REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
