@@ -1,0 +1,64 @@
+<user@host 1.11> docker build . -t spring
+Sending build context to Docker daemon  46.59kB
+Step 1/6 : FROM amazoncorretto:8-alpine-jdk
+ ---> 493f3cbe04e6
+Step 2/6 : EXPOSE 8080
+ ---> Using cache
+ ---> 6bbe3948aac3
+Step 3/6 : WORKDIR /usr/src/app
+ ---> Using cache
+ ---> 7e143f449b3e
+Step 4/6 : COPY ./spring-example-project/ .
+ ---> Using cache
+ ---> 8be0f07277f1
+Step 5/6 : RUN ./mvnw package
+ ---> Running in dd3ddeab9d5b
+Connecting to repo.maven.apache.org (151.101.244.215:443)
+saving to '/usr/src/app/.mvn/wrapper/maven-wrapper.jar'
+maven-wrapper.jar    100% |********************************| 48337  0:00:00 ETA
+'/usr/src/app/.mvn/wrapper/maven-wrapper.jar' saved
+[INFO] Scanning for projects...
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-parent/2.1.3.RELEASE/spring-boot-starter-parent-2.1.3.RELEASE.pom
+...
+Downloaded from central: https://repo.maven.apache.org/maven2/com/google/guava/guava/19.0/guava-19.0.jar (2.3 MB at 5.5 MB/s)
+[INFO] Replacing main artifact with repackaged archive
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.403 s
+[INFO] Finished at: 2024-06-16T19:53:46Z
+[INFO] ------------------------------------------------------------------------
+ ---> Removed intermediate container dd3ddeab9d5b
+ ---> 038aacd1d077
+Step 6/6 : CMD ["java", "-jar", "./target/docker-example-1.1.3.jar"]
+ ---> Running in 2066fa83c696
+ ---> Removed intermediate container 2066fa83c696
+ ---> c6ae178707f0
+Successfully built c6ae178707f0
+Successfully tagged spring:latest
+
+<user@host 1.11> docker run -p 127.0.0.1:3000:8080 spring
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.3.RELEASE)
+
+2024-06-16 19:54:11.148  INFO 1 --- [           main] c.d.dockerexample.DemoApplication        : Starting DemoApplication v1.1.3 on 65b8d7000c7c with PID 1 (/usr/src/app/target/docker-example-1.1.3.jar started by root in /usr/src/app)
+2024-06-16 19:54:11.151  INFO 1 --- [           main] c.d.dockerexample.DemoApplication        : No active profile set, falling back to default profiles: default
+2024-06-16 19:54:12.165  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-06-16 19:54:12.189  INFO 1 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-16 19:54:12.189  INFO 1 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.16]
+2024-06-16 19:54:12.199  INFO 1 --- [           main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/lib/jvm/java-8-amazon-corretto/lib/amd64/server:/usr/lib/jvm/java-8-amazon-corretto/lib/amd64:/usr/lib/jvm/java-8-amazon-corretto/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2024-06-16 19:54:12.258  INFO 1 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-16 19:54:12.259  INFO 1 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1061 ms
+2024-06-16 19:54:12.441  INFO 1 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2024-06-16 19:54:12.568  INFO 1 --- [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-06-16 19:54:12.725  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2024-06-16 19:54:12.728  INFO 1 --- [           main] c.d.dockerexample.DemoApplication        : Started DemoApplication in 1.918 seconds (JVM running for 2.236)
+2024-06-16 19:54:17.886  INFO 1 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-16 19:54:17.887  INFO 1 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-16 19:54:17.897  INFO 1 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
