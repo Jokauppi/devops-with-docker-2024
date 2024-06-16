@@ -1,0 +1,35 @@
+<user@host 1.7> docker build . -t curler
+Sending build context to Docker daemon  3.584kB
+Step 1/5 : FROM ubuntu:22.04
+ ---> 67c845845b7d
+Step 2/5 : WORKDIR /usr/src/app
+ ---> Using cache
+ ---> dd319f47ca60
+Step 3/5 : RUN apt-get update && apt-get install -y curl
+ ---> Running in 16707390a0f7
+Get:1 http://archive.ubuntu.com/ubuntu jammy InRelease [270 kB]
+...
+done.
+ ---> Removed intermediate container 16707390a0f7
+ ---> a3270bd66d54
+Step 4/5 : COPY script.sh .
+ ---> 387fd59fb424
+Step 5/5 : CMD ./script.sh
+ ---> Running in ed1b62984d94
+ ---> Removed intermediate container ed1b62984d94
+ ---> ce2697f3db93
+Successfully built ce2697f3db93
+Successfully tagged curler:latest
+
+<user@host 1.7> docker run -it curler
+Input website:
+helsinki.fi
+Searching..
+<html>
+<head><title>301 Moved Permanently</title></head>
+<body>
+<center><h1>301 Moved Permanently</h1></center>
+<hr><center>nginx/1.22.1</center>
+</body>
+</html>
+Input website:
